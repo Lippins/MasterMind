@@ -15,12 +15,14 @@ class Computer
   def make_guess(feedback)
     guess = if @previous_guesses.empty?
               # Random initial guess
+              show_text(:thinking_ai)
+              sleep 3
               generate_random_guess
             else
               refine_guess(feedback)
             end
     @previous_guesses << guess
-    puts "Computer guess: #{guess}"
+    puts "Computer guess: #{format_code(guess)}"
     guess
   end
 
@@ -39,8 +41,8 @@ class Computer
   def refine_guess(feedback)
     # We can implement a difficulty setting here
     # Computer makes a random sub-optimal guess about 80% of the time
-    puts 'Computer is thinking ...'
-    sleep 2
+    show_text(:thinking_ai)
+    sleep rand(3..6)
     return @remaining_possibilities.sample.split('') if rand < 0.8
 
     @remaining_possibilities = @remaining_possibilities.select do |code|

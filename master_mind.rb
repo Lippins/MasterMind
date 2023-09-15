@@ -42,8 +42,8 @@ class MasterMind
     code = code_maker.make_code
     feedback = []
 
-    11.times do
-      p code
+    11.times do |i|
+      puts "ATTEMPTS LEFT ➠ ➜ #{11 - i} "
       guess = code_breaker.make_guess(feedback)
       return display_win_status(:win, code, who) if winner?(code, guess)
 
@@ -56,6 +56,8 @@ class MasterMind
   def play_computer_round
     # player switches and computer starts the guessing
     @player.switch_role
+    sleep 2
+    show_text(:code_maker_note)
     play_round('Computer')
   end
 

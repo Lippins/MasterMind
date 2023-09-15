@@ -4,23 +4,27 @@
 module TextHelpers
   INTRO = "
 
-  >> Press any key to start playing. (☞⌐▀͡ ͜ʖ͡▀ )☞ || (̿▀Ĺ̯̿▀ )  Welcome to MASTERMIND!
+  >> (☞⌐▀͡ ͜ʖ͡▀ )☞    Welcome to MASTERMIND!    (̿▀Ĺ̯▀ )
 
   ---- [ HOW TO PLAY ] #{'- ' * 30}
 
   The AI generates a Secret Code, say '3 0 5 2' and you'll need
-  to crack/guess it. You can try a few times (11 times at maximum).
+  to crack/guess it. You'll have 11 tries to crack the code.
 
   After each wrong guess you get two hints that tell you:
   1. How many correct digits you've put in the right position
   2. How many correct digits you've put in the wrong position
+
+  Once the 11 tries are elapsed, the roles will be reversed:
+  1. You'll get the chance to create your secret code
+  2. The AI will also have to crack it in 11 tries
 
   ---- [ GROUND RULES ] #{'- ' * 30}
 
   Here are a few things to keep in mind.
 
   1. Length of the Secret Code:
-        The Secret Codde is 4 characters
+        The Secret Code is 4 characters
   2. Number of digits to make your Secret Code
         You can make yur Secret code using any digit between
         0 to 5 [0, 1, 2, 3, 4, 5]
@@ -28,27 +32,24 @@ module TextHelpers
         You have 11 guesses to figure out the secret code.
 
   +#{'- ' * 40}+
-  |#{' ' * 28}PRESS ANY KEY TO CONTINUE!  #{' ' * 25}|
+  |    YOU'LL START AS THE CODE BREAKER!  #{' ' * 41}|
   +#{'- ' * 40}+
+
+   ■■■■■■□□□□ PLEASE WAIT: The Computer is Making a Secret Code ■■■■■■□□□□
   "
 
   HEADER = "
-
-      #{'=' * 3}+#{'=' * 8}+++++#{'=' * 20}+++++#{'=' * 8}+#{'=' * 3}
-      #{' ' * 20}  MASTER MIND  #{' ' * 20}
-      #{'=' * 3}+#{'=' * 8}+++++#{'=' * 20}+++++#{'=' * 8}+#{'=' * 3}
+      ▒▒▒▒▒▒▒▒▒▒ 100% ᴄᴏᴍᴘʟᴇᴛᴇ! The Computer has created it's Secret Code!
       #{"\n" * 2}
-      #{'- ' * 8}+ - #{'- ' * 8}+#{' -' * 8} -
+      #{'- ' * 11}+ - #{'- ' * 11}+#{' -' * 11} -
 
-        Code Length 4     6 Items [0 - 5]     Trials 11
+             Code Length 4        6 Items [0 - 5]           Trials 11
 
-      #{'- ' * 8}+ - #{'- ' * 8}+#{' -' * 8} -
-
-      Get Started!
+      #{'- ' * 11}+ - #{'- ' * 11}+#{' -' * 11} -
   "
 
   PICK_DIGIT = "
-      Pick 4 digits from [0 - 5], separated by spaces:
+      Pick 4 digits from [0 - 5], separated by spaces ↴
   "
 
   HINT = "
@@ -57,7 +58,7 @@ module TextHelpers
   "
 
   WRONG_ENTRY = "
-      ✗ Wrong entry! Pick 4 digits from [0 - 5], separated by spaces:
+      ✗ Wrong entry! Pick 4 digits from [0 - 5], separated by spaces: ↴
   "
 
   WIN = "
@@ -82,11 +83,10 @@ module TextHelpers
   "
 
   REPLAY = "
+  --- [ WOULD YOU LIKE TO PLAY AGAIN? ] #{'- ' * 15}
 
-  #{'- ' * 15} [ WOULD YOU LIKE TO PLAY AGAIN? ] #{'- ' * 15}
-
-  #{' ' * 35}  Enter 'Y' to play again
-  #{' ' * 28}  Enter anything else to quit the game
+  #  Enter 'Y' to play again
+  #  Enter anything else to quit the game
 
   "
 
@@ -95,7 +95,43 @@ module TextHelpers
    |#{' ' * 28} THANKS FOR PLAYING (ʘ‿ʘ)╯ !  #{' ' * 22}|
    +#{'- ' * 40}+
   "
-end
 
-puts TextHelpers::REPLAY
-puts TextHelpers::THANKS
+  THINKING_AI = "
+  ▒▒▒▒▒▒▒▒▒▒ ..computer is thinking *___* ▒▒▒▒▒▒▒▒▒▒
+  "
+
+  ROLE_SWITCH_NOTE = "
+   ■■■■■■□□□□ PLEASE WAIT: Switching Player and Computer Roles ■■■■■■□□□□
+  "
+
+  CODE_MAKER_NOTE = "
+      ▒▒▒▒▒▒▒▒▒▒ 100% ᴄᴏᴍᴘʟᴇᴛᴇ! Roles Switched! YOU ARE NOW THE CODEMAKER!
+      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⠿⠿⠿⠿⠿⠿⠿⠿⢷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠁⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣶⣶⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣏⠀⠀⣤⣴⣾⣿⠿⠛⠉⠁⠀⠀⠀⠀⠀⠉⠛⠻⢿⣷⣶⣤⡄⠀⢸⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣆⠀⠉⠉⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠈⠉⠁⢠⣾⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣼⣿⣧⡀⠀⢻⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⣰⣿⣿⣤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣰⣾⠟⠛⠋⠉⠈⢻⣷⡄⠘⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⠏⢀⣼⡿⠁⠉⠉⠛⠻⢿⣦⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣰⣿⠃⠀⣀⣀⣀⣀⣀⣹⣿⣆⣈⣿⣷⣦⣄⣀⣀⣀⣀⣠⣤⣾⣿⣋⣠⣾⣟⣀⣀⣀⣀⣀⡀⠈⢿⣧⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⣿⠃⢰⣿⠟⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⣿⡇⠈⢿⣆⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⣿⠏⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠘⣿⣆⠀⠀⠀⠀
+⠀⠀⠀⢠⣿⡟⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⠿⠿⣷⣶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠸⣿⣆⠀⠀⠀
+⠀⠀⢀⣾⡟⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡟⠉⠀⠀⠀⠀⠈⠻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠹⣿⡄⠀⠀
+⠀⢀⣾⡟⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡏⠀⣴⣄⠀⠀⣠⣤⡄⠸⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠹⣿⡄⠀
+⠀⣼⡟⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣇⠀⠈⠻⠇⠐⠿⠋⠀⢠⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠹⣷⡀
+⢸⣿⠁⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣷⣦⡄⠀⠀⠀⣤⣶⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⣿⡧
+⠈⠻⣷⣦⡀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣷⣤⣤⣴⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⢀⣠⣾⡿⠃
+⠀⠀⠈⠙⢿⣷⣄⡀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⣠⣴⡿⠛⠁⠀⠀
+⠀⠀⠀⠀⠀⠈⠻⢿⣾⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⢀⣀⣀⣀⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠀⠀⠘⠛⠛⠛⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀
+
+      Pick 4 secret digits from [0 - 5], separated by spaces ↴
+  "
+end

@@ -13,6 +13,7 @@ class Player
 
   def make_guess(_feedback = nil)
     # we'll never need to pass feedback to this method.
+    show_text(:pick_digit)
     make_code
   end
 
@@ -26,6 +27,8 @@ class Player
   end
 
   def switch_role
+    sleep 1
+    show_text(:role_switch_note)
     @player_as_codebreaker = !@player_as_codebreaker
   end
 end

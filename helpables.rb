@@ -7,13 +7,16 @@ module Helpables
   TEXTS = {
     intro: TextHelpers::INTRO,
     header: TextHelpers::HEADER,
-    pick_dight: TextHelpers::PICK_DIGIT,
+    pick_digit: TextHelpers::PICK_DIGIT,
     hint: TextHelpers::HINT,
     wrong_entry: TextHelpers::WRONG_ENTRY,
     win: TextHelpers::WIN,
     loss: TextHelpers::LOSS,
     replay: TextHelpers::REPLAY,
-    thanks: TextHelpers::THANKS
+    thanks: TextHelpers::THANKS,
+    thinking_ai: TextHelpers::THINKING_AI,
+    role_switch_note: TextHelpers::ROLE_SWITCH_NOTE,
+    code_maker_note: TextHelpers::CODE_MAKER_NOTE
   }.freeze
 
   def compare_codes(code, guess)
@@ -54,5 +57,3 @@ module Helpables
     return_string += ' ]'
   end
 end
-
-# puts Helpables.update_text(:hint, 'hint_1', 'tested')
