@@ -4,9 +4,10 @@
 module TextHelpers
   INTRO = "
 
-  >> Press any key to start playing. (☞⌐▀͡ ͜ʖ͡▀ )☞   Welcome to MASTERMIND!
+  >> Press any key to start playing. (☞⌐▀͡ ͜ʖ͡▀ )☞ || (̿▀Ĺ̯̿▀ )  Welcome to MASTERMIND!
 
   ---- [ HOW TO PLAY ] #{'- ' * 30}
+
   The AI generates a Secret Code, say '3 0 5 2' and you'll need
   to crack/guess it. You can try a few times (11 times at maximum).
 
@@ -15,6 +16,7 @@ module TextHelpers
   2. How many correct digits you've put in the wrong position
 
   ---- [ GROUND RULES ] #{'- ' * 30}
+
   Here are a few things to keep in mind.
 
   1. Length of the Secret Code:
@@ -46,16 +48,54 @@ module TextHelpers
   "
 
   PICK_DIGIT = "
-      dummy - Pick 4 digits from [0 - 5], separated by spaces:
+      Pick 4 digits from [0 - 5], separated by spaces:
   "
 
   HINT = "
-
-     + Correct digits in the right position: \u{1f600} hint_1
-     ≈ Correct digits in the wrong position: \u{1f609} hint_2
+      + Correct digits in the right position: ( ◠‿◠) hint_1
+      ≈ Correct digits in the wrong position: ( ಠ‿<) hint_2
   "
 
   WRONG_ENTRY = "
-     ✗ Wrong entry! Pick 4 digits from [0 - 5], separated by spaces:
+      ✗ Wrong entry! Pick 4 digits from [0 - 5], separated by spaces:
+  "
+
+  WIN = "
+
+     #{'*' * 24}  #{'*' * 8}  #{'*' * 16}
+         #{' ' * 47}#
+         BINGO! #{' ' * 40}#
+     #   dummy Cracked the Code ᕙ (▀ĺ̯̿̿▀) ᕗ
+     #   cracked_code
+         #{' ' * 47}#
+     #{'*' * 24}  #{'*' * 8}  #{'*' * 16}
+  "
+
+  LOSS = "
+     #{'*' * 24}  #{'*' * 8}  #{'*' * 16}
+         #{' ' * 47}#
+         YIKES! #{' ' * 40}#
+     #   dummy didn't crack the Code (⌒_⌒;)
+     #   cracked_code
+         #{' ' * 47}#
+     #{'*' * 24}  #{'*' * 8}  #{'*' * 16}
+  "
+
+  REPLAY = "
+
+  #{'- ' * 15} [ WOULD YOU LIKE TO PLAY AGAIN? ] #{'- ' * 15}
+
+  #{' ' * 35}  Enter 'Y' to play again
+  #{' ' * 28}  Enter anything else to quit the game
+
+  "
+
+  THANKS = "
+   +#{'- ' * 40}+
+   |#{' ' * 28} THANKS FOR PLAYING (ʘ‿ʘ)╯ !  #{' ' * 22}|
+   +#{'- ' * 40}+
   "
 end
+
+puts TextHelpers::REPLAY
+puts TextHelpers::THANKS
