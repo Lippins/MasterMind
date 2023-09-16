@@ -20,19 +20,39 @@ module Helpables
   }.freeze
 
   def compare_codes(code, guess)
-    full_match = 0
-    partial_match = 0
-    winning_digit_counts = Hash.new(0)
-    code.each { |digit| winning_digit_counts[digit] += 1 }
-    code.each_with_index do |digit, index|
-      if guess[index] == digit
-        full_match += 1
-      elsif winning_digit_counts[guess[index]].positive?
-        partial_match += 1
-        winning_digit_counts[guess[index]] -= 1
-      end
-    end
+    full_match, unmatched_digits = check_full_match(code, guess)
+    partial_match = check_partial_match(unmatched_digits.first, unmatched_digits.last)
     [full_match, partial_match]
+  end
+
+  def check_full_match(code, guess)
+    # Checks the two arrays for a full match. Also returns the digits for partial matching
+    full_match = 0
+    # Store code and guess unmatched digits in an array for later matching
+    unmatched_digits = [code.map(&:clone), guess.map(&:clone)]
+    code.each_with_index do |digit, index|
+      next unless guess[index] == digit
+
+      full_match += 1
+      # leave empty spaces in unmatched digits
+      unmatched_digits.first[index] = nil
+      unmatched_digits.last[index] = nil
+    end
+    [full_match, unmatched_digits.map(&:compact)]
+  end
+
+  def check_partial_match(code, guess)
+    partial_match = 0
+    code_digit_counts = Hash.new(0)
+    code.each { |digit| code_digit_counts[digit] += 1 }
+
+    guess.each do |digit|
+      next unless code_digit_counts[digit].positive?
+
+      partial_match += 1
+      code_digit_counts[digit] -= 1
+    end
+    partial_match
   end
 
   def replay?
